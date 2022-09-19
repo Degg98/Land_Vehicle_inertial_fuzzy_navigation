@@ -1,0 +1,17 @@
+NAVIGAZIONE INERZIALE ASSISTITA DI UN VEICOLO TERRESTRE SFRUTTANDO LA SUA DINAMICA
+
+La INS sfrutta le varie fasi di moto e la dinamica del veicolo per migliorare la stima del KF di posizione e orientazione del veicolo.
+
+Misure osservabili legate alla dinamica stazionaria (veicolo fermo):
+- sfrutto le accelerazioni lungo x e y per misurare gli angoli di roll e pitch;
+- sfrutto il fatto che il veicolo è fermo per porre un vincolo sull'heading, che deve rimanere costante;
+- mediando l'uscita stazionaria dei giroscopi si può eliminare il rumore e il valor medio ottenuto rappresenta la stima del bias corrente.
+
+Misure osservabili legate alla dinamica rettilinea (veicolo si muove di moto rettilineo):
+- muovendosi lungo l'asse x body, l'accelerazione lungo l'asse trasversale (y) non è molto significativa. Allora si può pensare di usare la misura dell'accelerometro su quell'asse per stimare l'angolo di rollio;
+- posso correggere il drift del giroscopio sulla stima del rollio con la sua approssimazione fatta al punto precedente.
+
+Misure osservabili legate alla dinamica in curva
+- si può effettuare una stima della velocità di avanzamento a partire dall'accelerazione lungo y e dalla misura della velocità angolare lungo z.
+- in questo modo si può ridurre anche l'errore di drift della velocità.
+ 
