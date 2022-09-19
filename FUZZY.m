@@ -1,0 +1,3 @@
+%% Controllore FUZZY %%
+fis = mamfis('NumInputs',2,'NumInputMFs',2,'NumOutputs',1,...
+    'NumOutputMFs', 3,'MFType','trimf','AddRules','none');
