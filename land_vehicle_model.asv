@@ -1,0 +1,18 @@
+%% Land Vehicle Dynamic model
+
+% d_x is the derivative of x
+
+% Linear velocity
+syms d_Vf Vf 
+% Acceleration
+syms Abx Aby Abz
+% Angular velocity
+syms wbx wby wbz
+% Euler angles
+syms phi d_phi theta d_theta psi d_psi
+% Position in Navigation-Frame (NED)
+syms Pnn Pne Pnd d_Pnn d_Pne d_Pnd  
+
+% Model
+
+Abx = d_Vf + g*sin(theta)
