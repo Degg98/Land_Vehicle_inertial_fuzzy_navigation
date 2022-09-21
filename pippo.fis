@@ -1,0 +1,40 @@
+[System]
+Name='pippo'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=4
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='J'
+Range=[0 2]
+NumMFs=2
+MF1='LOW':'trimf',[0 0 1.6]
+MF2='HIGH':'trimf',[1.2 2 2]
+
+[Input2]
+Name='W'
+Range=[0 10]
+NumMFs=2
+MF1='LOW':'trimf',[0 0 8.75]
+MF2='HIGH':'trimf',[6.25 10 10]
+
+[Output1]
+Name='DI'
+Range=[0 1]
+NumMFs=3
+MF1='SMALL':'trimf',[0 0 0.5]
+MF2='MEDIUM':'trimf',[0 0.5 1]
+MF3='LARGE':'trimf',[0.5 1 1]
+
+[Rules]
+1 1, 1 (1) : 1
+2 1, 2 (1) : 1
+1 2, 2 (1) : 1
+2 2, 3 (1) : 1
