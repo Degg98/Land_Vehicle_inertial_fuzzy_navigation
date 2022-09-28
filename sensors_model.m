@@ -19,4 +19,4 @@ Wng = stdv_g*randn(3,1); % White Noise
 load('FUZZY.mat')
 load('Measure_collection.mat')
 
-n = 0.1;
+n = 2;
