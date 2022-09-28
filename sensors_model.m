@@ -8,7 +8,7 @@ stdv_a = 0.0055; % standard deviation
 Wna = stdv_a*randn(3,1); % White Noise
 
 % Gyros
-Bg = 5*ones(3,1); % deg/s
+Bg = 5*ones(3,1) ; % deg/s
 SFg = 0;
 MISg = 0.1; % deg
 stdv_g = 0.6325; % standard deviation
