@@ -77,3 +77,13 @@ title('Yaw')
 xlabel('sample')
 ylabel('deg')
 grid on
+
+figure(2)
+hold on
+plot(Vf_da)
+plot(Vf_gt)
+legend('dynamics aids', 'ground truth')
+title('Forward velocity')
+xlabel('sample')
+ylabel('m/s')
+grid on
