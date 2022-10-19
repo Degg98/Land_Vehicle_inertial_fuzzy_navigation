@@ -34,5 +34,5 @@ wz_des = [wz_des_1, wz_des_2, wz_des_3, wz_des_4, wz_des_5];
 load('FUZZY.mat')
 load('Measure_collection.mat')
 
-n_J = 0.45;
+n_J = 0.6;
 n_W = 0.18;
