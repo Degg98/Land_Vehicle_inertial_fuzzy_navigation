@@ -4,7 +4,7 @@
 Ba = 0.02*ones(3,1); % m/s^2
 SFa = 0.05;
 MISa = 0.1; % deg
-stdv_a = 0.0055; % standard deviation
+stdv_a = 4*0.0055; % standard deviation
 Wna = stdv_a*randn(3,1); % White Noise
 
 % Gyros
@@ -18,7 +18,7 @@ Wng = stdv_g*randn(3,1); % White Noise
 % Forward velocity (Abx)
 Vf_des_1 = [0, 0, 0, 0, 0, 0, 0, 4, 8.5, 5, 4, 5, 7, 4, 0, 0, 0];
 Vf_des_2 = [0, 0, 0, 0, 4, 8, 6, 4.5, 5.5, 7.5, 3.5, 6.5, 4, 0, 0];
-Vf_des_3 = [0, 0, 0, 0, 0, 4, 6, 9, 6, 4, 5.3, 6, 6.5, 5, 5.3, 8, 6.5, 4, 0];
+Vf_des_3 = [0, 0, 0, 0, 0, 4, 6, 9, 6, 4, 5.3, 6, 6.5, 5, 5.3, 8, 6.5, 4, 0, 0];
 Vf_des_4 = [0, 0, 0, 0, 0, 0, 4, 9, 6, 4.5, 5.5, 8, 4.5, 4.7, 4.7, 6.8, 4, 0, 0];
 Vf_des_5 = [0, 0, 0, 0, 0, 0, 6, 10, 3.3, 7, 9.5, 4, 0, 0, 0, 0, 0];
 Vf_des = [Vf_des_1, Vf_des_2, Vf_des_3, Vf_des_4, Vf_des_5];
@@ -34,4 +34,5 @@ wz_des = [wz_des_1, wz_des_2, wz_des_3, wz_des_4, wz_des_5];
 load('FUZZY.mat')
 load('Measure_collection.mat')
 
-n = 2;
+n_J = 0.45;
+n_W = 0.18;
