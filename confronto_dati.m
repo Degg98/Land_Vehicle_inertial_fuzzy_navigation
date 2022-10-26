@@ -26,64 +26,73 @@ end
 
 % Plot delle posizioni del drone
 figure(1)
-subplot(5,1,1)
+subplot(4,1,1)
 hold on
 plot(Vf_da)
 plot(Vf_gt)
-legend('dynamics aids', 'ground truth')
+legend('dynamics aids', 'ground truth', 'Location','best')
 title('Forward velocity')
 xlabel('sample')
 ylabel('m/s')
+xlim([0 2e4])
 grid on
 
-subplot(5,1,2)
+subplot(4,1,2)
 hold on
-plot(phi_da)
-plot(phi_gt)
-legend('dynamics aids', 'ground truth')
+phi_da_deg = rad2deg(phi_da);
+phi_gt_deg = rad2deg(phi_gt);
+plot(phi_da_deg)
+plot(phi_gt_deg)
+legend('dynamics aids', 'ground truth', 'Location','best')
 title('Roll')
 xlabel('sample')
-ylabel('rad')
+ylabel('deg')
+xlim([0 2e4])
+% ylim([-6 4])
 grid on
 
-subplot(5,1,3)
+subplot(4,1,3)
 hold on
 plot(theta_da)
 plot(theta_gt)
-legend('dynamics aids', 'ground truth')
+legend('dynamics aids', 'ground truth', 'Location','best')
 title('Pitch')
 xlabel('sample')
 ylabel('rad')
+xlim([0 2e4])
 grid on
 
-subplot(5,1,4)
-hold on
-plot(psi_da)
-plot(psi_gt)
-legend('dynamics aids', 'ground truth')
-title('Yaw')
-xlabel('sample')
-ylabel('rad')
-grid on
+% subplot(5,1,4)
+% hold on
+% plot(psi_da)
+% plot(psi_gt)
+% legend('dynamics aids', 'ground truth')
+% title('Yaw')
+% xlabel('sample')
+% ylabel('rad')
+% xlim([0 2e4])
+% grid on
 
-subplot(5,1,5)
+subplot(4,1,4)
 psi_deg = rad2deg(psi_da);
 psi_gt_deg = rad2deg(psi_gt);
 hold on
 plot(psi_deg)
 plot(psi_gt_deg)
-legend('dynamics aids', 'ground truth')
+legend('dynamics aids', 'ground truth', 'Location','best')
 title('Yaw')
 xlabel('sample')
 ylabel('deg')
+xlim([0 2e4])
 grid on
 
 figure(2)
 hold on
 plot(Vf_da)
 plot(Vf_gt)
-legend('dynamics aids', 'ground truth')
+legend('dynamics aids', 'ground truth', 'Location','best')
 title('Forward velocity')
 xlabel('sample')
 ylabel('m/s')
+xlim([0 2e4])
 grid on
