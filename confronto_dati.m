@@ -2,11 +2,83 @@ close all
 clc
 
 load('riferimenti.mat')
+load("Corrections.mat")
 load('Dynamics_aided.mat')
 
 
+%% PLOT MISURE
+l = length(measure);
+% Estraggo le componenti i accelerazione lineare e velocità angolare
+for i =1:l
+    Abx(i) = measure(2,i);
+    Aby(i) = measure(3,i);
+    Abz(i) = measure(4,i);
+    wbx(i) = measure(5,i);
+    wby(i) = measure(6,i);
+    wbz(i) = measure(7,i);
+end
 
-%% PLOT DATI
+% Plot delle accelerazioni lineari
+% figure()
+% subplot(3,1,1)
+% plot(Abx)
+% legend('Abx', 'Location','best')
+% title('x-axis linear acceleration')
+% xlabel('sample')
+% ylabel('m/s^{2}')
+% xlim([0 2e4])
+% grid on
+% 
+% subplot(3,1,2)
+% plot(Aby)
+% legend('Aby', 'Location','best')
+% title('y-axis linear acceleration')
+% xlabel('sample')
+% ylabel('m/s^{2}')
+% xlim([0 2e4])
+% grid on
+% 
+% subplot(3,1,3)
+% plot(Abz)
+% legend('Abz', 'Location','best')
+% title('z-axis linear acceleration')
+% xlabel('sample')
+% ylabel('m/s^{2}')
+% xlim([0 2e4])
+% grid on
+% 
+% % Plot delle velocità angolari
+% figure()
+% subplot(3,1,1)
+% plot(wbx)
+% legend('wbx', 'Location','best')
+% title('x-axis angular velocity')
+% xlabel('sample')
+% ylabel('m/s^{2}')
+% xlim([0 2e4])
+% % ylim([-0.5 0.5])
+% grid on
+% 
+% subplot(3,1,2)
+% plot(wby)
+% legend('wby', 'Location','best')
+% title('y-axis angular velocity')
+% xlabel('sample')
+% ylabel('m/s^{2}')
+% xlim([0 2e4])
+% % ylim([-0.5 0.5])
+% grid on
+% 
+% subplot(3,1,3)
+% plot(wbz)
+% legend('wbz', 'Location','best')
+% title('z-axis angular velocity')
+% xlabel('sample')
+% ylabel('m/s^{2}')
+% xlim([0 2e4])
+% grid on
+
+%% PLOT CONTFRONTO PARAMETRI STIMATI - GROUND TRUTH
 l = length(dynamics_aids);
 % Estraggo le componenti di posizione
 j = 1;
@@ -21,11 +93,20 @@ for i=1:l
     phi_da(j) = dynamics_aids(3,i);
     theta_da(j) = dynamics_aids(4,i);
     psi_da(j) = dynamics_aids(5,i);
+    % Estraggo le misure usate in correzione
+    Vf_c(j) = corrections(2,i);
+    Vf_c(Vf_c==0) = nan;
+    phi_c(j) = corrections(3,i);
+    phi_c(phi_c==0) = nan;
+    theta_c(j) = corrections(4,i);
+    theta_c(theta_c==0) = nan;
+    psi_c(j) = corrections(5,i);
+    psi_c(psi_c==0) = nan;
     j = j + 1;
 end
 
-% Plot delle posizioni del drone
-figure(1)
+
+figure()
 subplot(4,1,1)
 hold on
 plot(Vf_da)
@@ -53,12 +134,12 @@ grid on
 
 subplot(4,1,3)
 hold on
-plot(theta_da)
-plot(theta_gt)
+plot(rad2deg(theta_da))
+plot(rad2deg(theta_gt))
 legend('dynamics aids', 'ground truth', 'Location','best')
 title('Pitch')
 xlabel('sample')
-ylabel('rad')
+ylabel('deg')
 xlim([0 2e4])
 grid on
 
@@ -86,13 +167,44 @@ ylabel('deg')
 xlim([0 2e4])
 grid on
 
-figure(2)
-hold on
-plot(Vf_da)
-plot(Vf_gt)
-legend('dynamics aids', 'ground truth', 'Location','best')
-title('Forward velocity')
+% Plot velocità di avanzamento
+% figure()
+% hold on
+% plot(Vf_da)
+% plot(Vf_gt)
+% legend('dynamics aids', 'ground truth', 'Location','best')
+% title('Forward velocity')
+% xlabel('sample')
+% ylabel('m/s')
+% xlim([0 2e4])
+% grid on
+
+%% PLOT MISURE DI CORREZIONE
+
+figure()
+subplot(3,1,1)
+plot(Abx)
+legend('Abx', 'Location','best')
+title('x-axis linear acceleration')
 xlabel('sample')
-ylabel('m/s')
+ylabel('m/s^{2}')
+xlim([0 2e4])
+grid on
+
+subplot(3,1,2)
+plot(Aby)
+legend('Aby', 'Location','best')
+title('y-axis linear acceleration')
+xlabel('sample')
+ylabel('m/s^{2}')
+xlim([0 2e4])
+grid on
+
+subplot(3,1,3) 
+plot(rad2deg(phi_c))
+legend('phi_c', 'Location','best')
+title('Corrected roll')
+xlabel('sample')
+ylabel('deg')
 xlim([0 2e4])
 grid on
