@@ -1,4 +1,4 @@
-# Land_Vehicle_inertial_fuzzy_navigation
+# Land Vehicle Inertial Fuzzy Navigation
 
 
 ## Pipeline esecuzione:
